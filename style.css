@@ -25,6 +25,7 @@ body {
     padding: 1vmax;
     box-shadow: 1px 1px 3px black;
     border-bottom-right-radius: 4px;
+
 }
 
 .user-info {
@@ -50,11 +51,11 @@ body {
     color: #2c3e50;
     padding: 1vmax;
     font-family: 'Indie Flower', cursive;
+    margin-top: 20px;
 }
 
 .quote-container>p {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1vmax;
+    font-size: 1.5vmax;
 }
 
 .content-container {
@@ -78,6 +79,10 @@ body {
 
 ul {
     list-style-type: none;
+}
+
+ul li {
+    margin-top: 10px;
 }
 
 .buttons {

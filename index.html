@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-
 </head>
 
 <body>
@@ -24,11 +23,53 @@
             <div class="friends-container">	
             </div>	
         </div>	
-        <div class="buttons">	
-            <button>Load User Data</button>	
-            <button>Display User</button>	
-        </div>	
+        <div class="buttons">
+            <button id="generate">Generate User</button>	
+            <button id="save">Save User Page</button>	
+            <button id="load">Load User Page</button>	
+        </div>
+        
     </div>
-</body>
 
+    <!--All the scripts below -->
+    <script id="mainUser-template" type="text/x-handlebars-template">
+            <img id="profile-pic" src="{{picture}}" alt="#">
+            <div class="user-info">
+                <p>{{firstName}} {{lastName}}</p>
+                <p>{{state}}, {{city}}</p>
+            </div>
+    </script>
+    
+    <script id="friends-template" type="text/x-handlebars-template">
+        <ul>        
+            {{#each friends}}
+            <li>{{firstName}} {{lastName}}</li>
+            {{/each}}
+        </ul>
+    </script>
+    
+    <script id="quote-template" type="text/x-handlebars-template">
+        <span>Favorite quote:</span>
+        <p>"{{quote}}"</p>
+        <span>-Kanye West</span>
+    </script>
+    
+    <script id="pokemon-template" type="text/x-handlebars-template">
+        <img id="pokemon-image" src={{pokemon.sprite}} alt="">
+        <p id="pokemon-text">{{properCase pokemon.name}}</p>
+    </script>
+    
+    <script id="meatText-template" type="text/x-handlebars-template">
+        <div class="meat-text">About me: <br>
+        {{meatText}}
+        </div>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="APIManager.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="main.js"></script>
+</body>
 </html>
