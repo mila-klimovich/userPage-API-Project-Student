@@ -6,6 +6,7 @@ class APIManager {
             friends: [],
             quote: "",
             pokemon: null,
+            gif: null,
         };
     }
 
@@ -50,9 +51,11 @@ class APIManager {
             `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
         );
 
+
         return {
             name: pokemon.name,
             sprite: pokemon.sprites.front_default,
+            type: pokemon.types[0].type.name,
         };
     }
 
@@ -62,14 +65,26 @@ class APIManager {
         );
     }
 
+    async getPokemonGif() {
+        let searchPokemon = (await this.getPokemon()).name;
+        let gifObject = await $.get(
+            `http://api.giphy.com/v1/gifs/search?q=${searchPokemon}+%20pokemon&rating=PG&=&api_key=AyNkVPxUIN6Mswv4HU831efWTosug0g1&limit=5`
+        );
+        let gif = gifObject.data[0].images.original.url;
+        searchPokemon = '';
+        return gif; 
+    }
+
+
     async loadData() {
-        const [mainUser, friends, quote, pokemon, meatText] = await Promise.all(
+        const [mainUser, friends, quote, pokemon, meatText, gif] = await Promise.all(
             [
                 this.getMainUser(),
                 this.getFriends(),
                 this.getQuote(),
                 this.getPokemon(),
                 this.getBaconIpsum(),
+                this.getPokemonGif()
             ]
         );
 
@@ -78,6 +93,7 @@ class APIManager {
         this.data.quote = quote;
         this.data.pokemon = pokemon;
         this.data.meatText = meatText;
+        this.data.gif = gif;
 
         return this.data;
     }

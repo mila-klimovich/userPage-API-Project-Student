@@ -14,7 +14,8 @@
     <div class="container">	
         <div class="user-container"></div>	
         <div class="quote-container"></div>	
-        <div class="content-container">	
+        <div class="content-container">
+            <div class="gif-container"></div>	
             <div class="pokemon-container"></div>	
             <div class="meat-container"></div>	
         </div>	
@@ -56,7 +57,12 @@
     
     <script id="pokemon-template" type="text/x-handlebars-template">
         <img id="pokemon-image" src={{pokemon.sprite}} alt="">
-        <p id="pokemon-text">{{properCase pokemon.name}}</p>
+        <p id="pokemon-text">{{properCase pokemon.name}} -> {{properCase pokemon.type}} Type</p>
+    </script>
+
+    <script id="gif-template" type="text/x-handlebars-template">
+        <img id="pokemon-gif" src="{{gif}}" alt="#">
+        <p id="gif-template">{{properCase pokemon.name}}</p>
     </script>
     
     <script id="meatText-template" type="text/x-handlebars-template">

@@ -50,17 +50,32 @@ class Renderer {
         $(".meat-container").append(newHTML);
     }
 
+    renderGif(gif) {
+        $(".gif-container").empty();
+
+        const source = $("#gif-template").html();
+        const template = Handlebars.compile(source);
+        const newHTML = template({gif});
+
+        $(".gif-container").append(newHTML);
+    }
+
     renderData(data) {
         this.renderMainUser(data.mainUser);
         this.renderFriends(data.friends);
         this.renderQuote(data.quote);
         this.renderPokemon(data.pokemon);
         this.renderMeatText(data.meatText);
+        this.renderGif(data.gif);
     }
 }
 
 Handlebars.registerHelper("properCase", function (str) {
+    if (typeof str === "string") {
     return str.replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
+} else {
+    return '';
+}
 });
